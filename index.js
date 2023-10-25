@@ -17,8 +17,19 @@ console.log(app)
 
 // console.log(result)
 
+/*
 const fs = require('fs')
 
 fs.writeFileSync("hello.txt","learn node js from step by step")
 console.log("==>",__dirname)
 console.log("file_name",__filename)
+
+*/
+
+const http = require('http')
+
+http.createServer((req , resp)=>{
+
+    resp.write("Hello this is Rohit Kumar Ranjan")
+    resp.end()
+}).listen(4500);
