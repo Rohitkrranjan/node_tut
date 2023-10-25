@@ -36,5 +36,20 @@ http.createServer((req , resp)=>{
 }).listen(4500);
 */
 
+/*
 const colors = require('colors')
 console.log("Rohit" .red)
+*/
+
+// const chalk = require('chalk')
+
+// console.log(chalk.yellow("Hello Rohit"))
+
+const http = require('http')
+const data = require('./data')
+
+http.createServer((req , res)=>{
+    res.writeHead(200,{'content-type':'application\json'});
+    res.write(JSON.stringify(data));
+    res.end();
+}).listen(5000)
