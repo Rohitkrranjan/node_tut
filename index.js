@@ -138,6 +138,7 @@ fs.unlinkSync(`${dirPath}/fruit.txt`)
 
 
 //  Asynchronous Programming Language
+/*
 
 let a=10;
 let b=0;
@@ -159,5 +160,21 @@ waitingData.then((data)=>{
 
 console.log(a+b);
 
+*/
 
+const express = require('express');
+const app = express();
 
+app.get('',(req , res)=>{
+    res.send('Hello, this is home page');
+});
+
+app.get('/about',(req , res)=>{
+    res.send("Hello , this is about page ");
+});
+
+app.get('/help',(req,res)=>{
+    res.send("Hello , this is help page");
+});
+
+app.listen(5400);
