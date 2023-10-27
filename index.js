@@ -97,10 +97,10 @@ fs.readdir(dirPath,(err,files)=>{
 
 */
 
-const fs = require('fs');
-const path = require('path');
-const dirPath = path.join(__dirname,'crud');
-const filePath = `${dirPath}/apple.txt`;
+// const fs = require('fs');
+// const path = require('path');
+// const dirPath = path.join(__dirname,'crud');
+// const filePath = `${dirPath}/apple.txt`;
 
 
 // fs.writeFileSync(filePath,'This is a simple text file');
@@ -162,6 +162,7 @@ console.log(a+b);
 
 */
 
+/*
 const express = require('express');
 const app = express();
 
@@ -186,3 +187,17 @@ app.get('/help',(req,res)=>{
 });
 
 app.listen(4300);
+*/
+
+
+const express =require('express');
+const path = require('path');
+
+const app = express();
+
+const publicPath = path.join(__dirname,'Public');
+console.log(publicPath);
+
+app.use(express.static(publicPath));
+
+app.listen(2000);
