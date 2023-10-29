@@ -102,7 +102,6 @@ fs.readdir(dirPath,(err,files)=>{
 // const dirPath = path.join(__dirname,'crud');
 // const filePath = `${dirPath}/apple.txt`;
 
-
 // fs.writeFileSync(filePath,'This is a simple text file');
 
 // fs.readFile(filePath , 'utf8' , (err,item)=>{
@@ -135,7 +134,6 @@ fs.rename(filePath , `${dirPath}/fruit.txt` , (err)=>{
 fs.unlinkSync(`${dirPath}/fruit.txt`)
 
 */
-
 
 //  Asynchronous Programming Language
 /*
@@ -256,9 +254,7 @@ app.listen(5600);
 
 */
 
-
-
-const dbConnect = require('./mongodb')
+// const dbConnect = require('./mongodb')
 /* 1st methoid 
 
 dbConnect().then((resp)=>{
@@ -270,10 +266,29 @@ dbConnect().then((resp)=>{
 
 // 2nd method
 
-const main =async()=>{
-    let data = await dbConnect();
-    data = await data.find().toArray();
-    console.log(data);
-}
+// const main =async()=>{
+//     let data = await dbConnect();
+//     data = await data.find().toArray();
+//     console.log(data);
+// }
+
+// main();
+// =========================================================================================================================================
+
+const mongoose = require("mongoose");
+
+const main = async () => {
+  await mongoose.connect("mongodb://localhost:27017/e-comm");
+  const ProductSchema = new mongoose.Schema({
+    name: String,
+    price:Number
+  });
+
+  const productsModel = mongoose.model("products", ProductSchema);
+  let data = new productsModel({ name: "m-18" ,price:12345});
+  let result = await data.save();
+
+  console.log(result);
+};
 
 main();
