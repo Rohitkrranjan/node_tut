@@ -24,6 +24,15 @@ app.put('/:name',async(req,resp)=>{
     {name:req.params.name},
     {$set:req.body}
 )
-  resp.send({result:"update"})
+  resp.send({status:"update"})
+})
+
+app.delete("/:id" , async (req,resp)=>{
+  console.log(req.params.id)
+
+  const data =await dbConnect();
+  const result = data.deleteOne({_id: new mongodb.ObjectId(req.params.id)})
+
+  req.send(result);
 })
 app.listen(4240);
