@@ -275,20 +275,3 @@ dbConnect().then((resp)=>{
 // main();
 // =========================================================================================================================================
 
-const mongoose = require("mongoose");
-
-const main = async () => {
-  await mongoose.connect("mongodb://localhost:27017/e-comm");
-  const ProductSchema = new mongoose.Schema({
-    name: String,
-    price:Number
-  });
-
-  const productsModel = mongoose.model("products", ProductSchema);
-  let data = new productsModel({ name: "m-18" ,price:12345});
-  let result = await data.save();
-
-  console.log(result);
-};
-
-main();
